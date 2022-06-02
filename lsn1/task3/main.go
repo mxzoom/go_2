@@ -25,6 +25,8 @@ func createMyEmptyFile(path, prefix string, count int) {
 						value.Close()
 						fmt.Printf("%s, has been closed \n", value.Name())
 					}
+					arrFD = arrFD[:0]
+					fmt.Println(arrFD)
 				}
 			}()
 			if i%64 == 0 {
@@ -46,6 +48,7 @@ func createMyEmptyFile(path, prefix string, count int) {
 		value.Close()
 		fmt.Printf("%s, has been closed \n", value.Name())
 	}
+
 	for _, value := range errFD {
 		file, err := os.Create(value)
 		if err != nil {
@@ -59,5 +62,5 @@ func createMyEmptyFile(path, prefix string, count int) {
 }
 
 func main() {
-	createMyEmptyFile("/home/mxz/temp/", "empty_file", 500)
+	createMyEmptyFile("/home/mxz/temp/", "empty_file", 128)
 }

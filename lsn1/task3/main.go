@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"strconv"
@@ -62,5 +63,9 @@ func createMyEmptyFile(path, prefix string, count int) {
 }
 
 func main() {
-	createMyEmptyFile("/home/mxz/temp/", "empty_file", 128)
+	path := flag.String("path", "", "path to file")
+	prefix := flag.String("prefix", "", "file prefix")
+	fileN := flag.Int("count", 1, "number of created files")
+	flag.Parse()
+	createMyEmptyFile(*path, *prefix, *fileN)
 }
